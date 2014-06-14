@@ -11,4 +11,4 @@ A aplicação consiste em um CRUD simples de vendas. Você pode cadastrar, edita
 
 1. Faça o download ou clone a aplicação
 2. Baixe e instale o framework Django versão 1.7 [Veja como clicando aqui](https://www.djangoproject.com/download/)
-3. Execulte a aplicação pela url seu_dominio/sales
+3. Execulte a aplicação
