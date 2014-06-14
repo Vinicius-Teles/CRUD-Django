@@ -43,3 +43,5 @@ def search(request):
 		'form' : SaleForm(),
 		'sales' : sales
 	})
+
+	
