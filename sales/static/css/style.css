@@ -1,0 +1,43 @@
+/*PAGE*/
+.page-content{
+	margin-top:40px;
+	margin-bottom: 40px;
+}
+/*HEADER*/
+header{
+	box-shadow: 1px 0 3px #000;
+	text-align: center;
+	background: #092e20;
+	padding: 15px 0 10px 0;
+	color: #FFF;
+}
+header .header-title{
+	margin-top: 0;
+}
+header .logo{
+	display: block;
+	float: left;
+	height: 40px;
+}
+/*LISTAGEM DAS VENDAS*/
+.table-sales thead{
+	background: #092e20;
+	color: #fff;
+}
+.table-sales th{
+	text-align: center;
+}
+.actions{
+	width: 250px;
+	text-align: center;
+}
+.list-sale{
+	text-align: center;
+}
+
+/*FORMULÁRIO DE CADASTRO*/
+.formSale input[type=text],
+.formSale textarea{
+	width: 100%;
+	max-width: 100%;
+}

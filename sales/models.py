@@ -1,5 +1,4 @@
 from django.db import models
-import locale
 
 # Create your models here.
 class Product(models.Model):
@@ -16,12 +15,17 @@ class User(models.Model):
         return self.name
 
 class Sale(models.Model):
+    
+    def calcValue(self):
+       return sum(product.price for product in self.products.all())
+    calcValue.short_description = 'Valor Total'
 
     user = models.ForeignKey(User, verbose_name="Comprador")
     products = models.ManyToManyField(Product, verbose_name="Produtos")
     date = models.DateTimeField(auto_now_add=True, verbose_name="Data da venda")
-    note = models.CharField(max_length=200, verbose_name="Observações")
-    value = models.DecimalField(max_digits=16,decimal_places=2,verbose_name="Valor total")
+    note = models.TextField(max_length=200, verbose_name="Observações")
+    trace_code = models.CharField(max_length=13,verbose_name="Código de rastreamento")
+    value = property(calcValue)
     
     def __str__(self):
         return "Venda "+str(self.id)

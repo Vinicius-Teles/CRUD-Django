@@ -1,16 +1,45 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
+from sales.forms import SaleForm
+from sales.models import Sale
 
 # Create your views here.
 
 def index(request):
-    return render(request,'sales/index.html')
+	if request.method == 'POST':
+		form = SaleForm(request.POST)
+		if not form.data['id']:
+			form.save()
+		else:
+			edit = get_object_or_404(Sale, pk=form.data['id'])
+			formEdit = SaleForm(request.POST or None, instance=edit)
+			formEdit.save();
+	return render(request,'sales/index.html',{
+    	'form': SaleForm(),
+    	'sales': Sale.objects.all()
+    })
+	
+def edit(request,sale_id):
+	sale = Sale.objects.get(pk=sale_id)
+	form = SaleForm(instance=sale)
+	return render(request,'sales/index.html',{
+    	'form': form,
+    	'sales': Sale.objects.all(),
+    	'id': sale_id
+    })
 
-def save(request):
-    return HttpResponse("salvar")
+def delete(request,sale_id):
+	sale = Sale.objects.get(pk=sale_id)
+	sale.delete();
+	return redirect('/')
 
-def edit(request):
-    return HttpResponse("editar")
-
-def delete(request):
-    return HttpResponse("deletar")
+def search(request):
+	search = request.POST['search']
+	sales = ""
+	if type( search ) == int:
+		sales = Sale.objects.filter(id=int(search))
+	return render(request, 'sales/index.html',{
+		'form' : SaleForm(),
+		'sales' : sales
+	})
