@@ -24,4 +24,9 @@
     
 		<script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
 		{% block scripts %} {% endblock %}
+		<script>
+			$(document).ready(function(){
+				Index.init();
+			});
+		</script>
 </html>

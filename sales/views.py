@@ -20,6 +20,18 @@ def index(request):
     	'form': SaleForm(),
     	'sales': Sale.objects.all()
     })
+
+def sales(request):
+	form = SaleForm(request.POST)
+	return render(request,'sales/form.html',{
+    	'form': form,
+    	'sales': Sale.objects.all()
+    })
+
+def save(request):
+	form = SaleForm(request.POST)
+	form.save()
+	return redirect('/')
 	
 def edit(request,sale_id):
 	sale = Sale.objects.get(pk=sale_id)

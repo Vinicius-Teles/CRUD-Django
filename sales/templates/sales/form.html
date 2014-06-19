@@ -1,6 +1,6 @@
 {% extends "sales/main.html" %}
 {% block content %}
-<form action="/save/" method="post">
+<form action="/save/" class="sale-form" method="post">
 	{% csrf_token %}
 	{{ form.as_p }}
 	<input type="hidden" name="id" value="{{id}}" />

@@ -42,7 +42,8 @@
 							<div class="col-md-6">
 								<form action="/{{sale.id}}/delete/" method="POST" class="delet_form">
 									{% csrf_token %}
-		        					<button type="button" onclick="delete_sale()" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Deletar</button>
+									{% include "sales/modal.html" with title="Atenção"  message="Tem certeza que deseja deletar essa venda?" %}
+		        					<button type="button" class="btn btn-danger delete-sale"><i class="glyphicon glyphicon-trash"></i> Deletar</button>
 								</form>
 							</div>
 						</div>
@@ -54,7 +55,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<a class="addSale btn"><i class="glyphicon glyphicon-plus"></i> Adicionar venda</a>
+		<a class="add-sale btn"><i class="glyphicon glyphicon-plus"></i> Adicionar venda</a>
 	</div>
 {% endblock %}
 {% block scripts %} 

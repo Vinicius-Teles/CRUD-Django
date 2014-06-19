@@ -1,15 +1,34 @@
-function delete_sale(){
-	var form = $('.delet_form');
-	var res = confirm("Tem certeza que deseja exluir essa venda?");
-	if(res){
-		form.submit();
+var Index = (function($){
+	var form = $('form.sale-form');
+	var tableList = $('.table-sales');
+
+	function _deleteSale(){
+		$(this).siblings('.modal').first().modal();
 	}
-}
-$(document).ready(function(){
-	$('body').on("click",".addSale",function(){
-		$('.formSale').show("fast",function(){
-			var top = $(this).offset().top;
-			$('body').scrollTop(top)
-		})
-	});
-});
+
+	function _addSale(){
+		window.location = "/sales/";
+	}
+
+	function _confirmModal(){
+		$(this).parents("form").first().submit();
+	}
+
+	function _denyModal(e){
+		e.preventDefault();
+	}
+
+	function _addEvents(){
+		tableList.on("click",".delete-sale",_deleteSale);
+		$('body').on("click",".add-sale",_addSale);
+		$('body').on("click",".deny-modal",_denyModal);
+		$('body').on("click",".confirm-modal",_confirmModal);
+	}
+
+	function init(){
+		_addEvents();
+	}
+	return {
+		init: init
+	}
+})(jQuery);
