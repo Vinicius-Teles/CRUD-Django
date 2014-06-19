@@ -34,7 +34,7 @@
 		            <td class="actions">
 						<div class="row">
 							<div class="col-md-6">
-								<form action="/sales/{{sale.id}}" method="POST">
+								<form action="/sales/{{sale.id}}/" method="POST">
 									{% csrf_token %}
 									<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
 								</form>
@@ -57,7 +57,4 @@
 	<div class="row">
 		<a class="add-sale btn"><i class="glyphicon glyphicon-plus"></i> Adicionar venda</a>
 	</div>
-{% endblock %}
-{% block scripts %} 
-	<script src="{{ STATIC_URL }}js/index.js" type="text/javascript"></script>
 {% endblock %}

@@ -30,15 +30,18 @@ def sales(request):
 
 def save(request):
 	form = SaleForm(request.POST)
+	message = "Venda cadastrada com sucesso"
+	if form.data['id']:
+		edit = get_object_or_404(Sale, pk=form.data['id'])
+		form = SaleForm(request.POST or None, instance=edit)
 	form.save()
 	return redirect('/')
 	
 def edit(request,sale_id):
 	sale = Sale.objects.get(pk=sale_id)
 	form = SaleForm(instance=sale)
-	return render(request,'sales/index.html',{
+	return render(request,'sales/form.html',{
     	'form': form,
-    	'sales': Sale.objects.all(),
     	'id': sale_id
     })
 

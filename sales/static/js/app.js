@@ -1,4 +1,4 @@
-var Index = (function($){
+var App = (function($){
 	var form = $('form.sale-form');
 	var tableList = $('.table-sales');
 
