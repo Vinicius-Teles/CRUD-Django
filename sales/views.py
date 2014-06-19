@@ -13,7 +13,7 @@ def index(request):
     })
 
 def sales(request):
-	form = SaleForm(request.POST)
+	form = SaleForm()
 	return render(request,'sales/form.html',{
     	'form': form,
     })
@@ -22,13 +22,17 @@ def save(request):
 	form = SaleForm(request.POST)
 	message = "Venda cadastrada com sucesso"
 	sale_id = form.data['id']
-	if sale_id:
-		message = "Venda editada com sucesso"
-		inst = Sale.objects.get(pk=sale_id)
-		form = SaleForm(request.POST or None, instance=inst)
-	messages.add_message(request, messages.INFO, message, extra_tags='alert-success')
-	form.save()
-	return redirect('/')
+	if(form.is_valid()):
+		if sale_id:
+			message = "Venda editada com sucesso"
+			inst = Sale.objects.get(pk=sale_id)
+			form = SaleForm(request.POST or None, instance=inst)
+		messages.add_message(request, messages.INFO, message, extra_tags='alert-success')
+		form.save()
+		return redirect('/')
+	return render(request,'sales/form.html',{
+    	'form': form,
+    })
 	
 def edit(request,sale_id):
 	sale = Sale.objects.get(pk=sale_id)
