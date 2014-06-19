@@ -1,0 +1,62 @@
+<div class="row">
+	<div class="col-md-4">
+		<form action="/search/" class="form-search" method="POST">
+			{% csrf_token %}
+			<div class="input-group">
+				<input type="search" class="form-control" value="{{search}}" name="search"></input>
+		  		<span class="input-group-btn">
+		    		<button class="btn btn-default" type="submit">Pesquisar</button>
+		  		</span>
+		    </div><!-- /input-group -->
+		</form>
+	</div>
+	<div class="col-md-8">
+		{% if messages %}
+		    {% for message in messages %}
+		    {% include "sales/messages.html" %}
+		    {% endfor %}
+		{% endif %}
+	</div>
+</div>
+<table class="table table-hover table-bordered table-sales">
+	<thead>
+		<th>Id</th>
+		<th>Comprador</th>
+		<th>Produtos</th>
+		<th>Data</th>
+		<th>Valor total</th>
+		<th>Código de rastreamento</th>
+		<th>Observações</th>
+		<th>Ações</th>
+	</thead>
+	<tbody>
+{% for sale in sales %}
+    <tr>
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.user }}</td>
+        <td>{{ sale.listProductsString}}</td>
+        <td>{{ sale.date }}</td>
+        <td>{{ sale.value }}</td>
+        <td>{{ sale.trace_code }}</td>
+        <td>{{ sale.note }}</td>
+        <td class="actions">
+			<div class="row">
+				<div class="col-md-6">
+					<form action="/sales/{{sale.id}}/" method="POST">
+						{% csrf_token %}
+						<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
+					</form>
+				</div>
+				<div class="col-md-6">
+					<form action="/{{sale.id}}/delete/" method="POST" class="delet_form">
+						{% csrf_token %}
+						{% include "sales/modal.html" with title="Atenção"  message="Tem certeza que deseja deletar essa venda?" %}
+    					<button type="button" class="btn btn-danger delete-sale"><i class="glyphicon glyphicon-trash"></i> Deletar</button>
+					</form>
+				</div>
+			</div>
+		</td>
+    </tr>
+{% endfor %}
+    <tbody>
+</table>

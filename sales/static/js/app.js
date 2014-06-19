@@ -25,8 +25,17 @@ var App = (function($){
 		$('body').on("click",".confirm-modal",_confirmModal);
 	}
 
+	function _handleMessages(){
+		$('.alert').show("fade");
+		var id = setInterval(function(){
+			$('.alert').hide("slow");
+			clearInterval(id)
+		}, 2000);
+	}
+
 	function init(){
 		_addEvents();
+		_handleMessages();
 	}
 	return {
 		init: init

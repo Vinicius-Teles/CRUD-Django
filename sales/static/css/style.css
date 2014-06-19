@@ -34,10 +34,18 @@ header .logo{
 .list-sale{
 	text-align: center;
 }
+.form-search{
+	margin-bottom: 5px;
+}
 
 /*FORMULÁRIO DE CADASTRO*/
-.formSale input[type=text],
-.formSale textarea{
+.sale-form input[type=text],
+.sale-form textarea{
 	width: 100%;
 	max-width: 100%;
+}
+
+/*MENSAGENS DE RETORNO*/
+.alert{
+	display: none;
 }
