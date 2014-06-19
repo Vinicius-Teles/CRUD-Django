@@ -32,6 +32,7 @@ def save(request):
 		return redirect('/')
 	return render(request,'sales/form.html',{
     	'form': form,
+    	'id': sale_id
     })
 	
 def edit(request,sale_id):
