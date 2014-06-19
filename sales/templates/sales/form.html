@@ -1,9 +1,24 @@
 {% extends "sales/main.html" %}
+
+{% block styles %} 
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/form.css" />
+{% endblock %}
+
 {% block content %}
-<form action="/save/" class="sale-form" method="post">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<input type="hidden" name="id" value="{{id}}" />
-	<input type="submit" value="Salvar" />
-</form>
+	<div class="content cadastre">
+		<h2 class="page-title">Cadastro de vendas</h2>
+		<form action="/save/" class="sale-form" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="hidden" name="id" value="{{id}}" />
+			<div class="row form-actions">
+				<a href="/" class="btn btn-warning button-right pull-left" >
+					<i class="glyphicon glyphicon-arrow-left"></i> Voltar
+				</a>
+				<button type="submit" class="btn btn-success button-right pull-right" >
+					<i class="glyphicon glyphicon-floppy-disk"></i> Salvar
+				</button>
+			</div>
+		</form>
+	</div>
 {% endblock %}

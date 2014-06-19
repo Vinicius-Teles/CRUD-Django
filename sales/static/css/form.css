@@ -1,0 +1,33 @@
+.page-content{
+	background: transparent;
+}
+.content.cadastre{
+	background-color: #f9f9f9;
+	width: 450px;
+	margin: 0 auto;
+	margin-bottom: 0px;
+	padding: 30px;
+	padding-top: 20px;
+	padding-bottom: 15px;
+	box-shadow: 1px 1px 2px 1px #fff;
+	color: #989898;
+}
+.cadastre h2{
+	margin-top: 0;
+	text-align: center;
+}
+.sale-form input[type=text],
+.sale-form textarea{
+	width: 100%;
+	max-width: 100%;
+}
+.errorlist{
+	list-style: none;
+	padding: 0;
+	color: #a94442;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.form-actions{
+	padding: 0 15px;
+}

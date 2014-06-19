@@ -1,7 +1,24 @@
 /*PAGE*/
+body{
+	background: #092e20; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDZlMmUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjODVjNDczIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-radial-gradient(center, ellipse cover,  #092e20 0%, #85c473 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#092e20), color-stop(100%,#85c473)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #092e20 0%,#85c473 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #092e20 0%,#85c473 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #092e20 0%,#85c473 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  #092e20 0%,#85c473 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#092e20', endColorstr='#85c473',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+}
+.page-title{
+	color: #487858;
+	
+}
 .page-content{
 	margin-top:40px;
 	margin-bottom: 40px;
+	background: #f9f9f9;
 }
 /*HEADER*/
 header{
@@ -36,20 +53,6 @@ header .logo{
 }
 .form-search{
 	margin-bottom: 5px;
-}
-
-/*FORMULÁRIO DE CADASTRO*/
-.sale-form input[type=text],
-.sale-form textarea{
-	width: 100%;
-	max-width: 100%;
-}
-.errorlist{
-	list-style: none;
-	padding: 0;
-	color: #a94442;
-	margin-bottom: 5px;
-	font-weight: 700;
 }
 
 /*MENSAGENS DE RETORNO*/
