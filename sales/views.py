@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from sales.forms import SaleForm
 from sales.models import Sale
+from django.db.models import Q
 
 # Create your views here.
 
@@ -36,12 +37,12 @@ def delete(request,sale_id):
 
 def search(request):
 	search = request.POST['search']
-	sales = ""
-	if type( search ) == int:
-		sales = Sale.objects.filter(id=int(search))
+	query = Q(user__name__icontains=search) | Q(products__name__icontains=search ) | Q(trace_code__icontains=search) | Q(note=search)
+	sales = Sale.objects.filter(query).distinct()
 	return render(request, 'sales/index.html',{
 		'form' : SaleForm(),
-		'sales' : sales
+		'sales' : sales,
+		'search' : search
 	})
 
 	
